@@ -14,11 +14,16 @@ just copy pase the 'createsite' file ( with out .p extenstion ) to the destinati
 then try running the following command 
 
 $ sudo createsite 
+
 $ Enter sitename (in lowercase): mysitename
+
 $ Enter site domain (in lowercase eg : .local , .com , .net .. ):  .local
+
 $ Enter site framework (  default / codeignitor / laravel / lumen  ): default
 
 
 $ Apache Service Reloaded!
+
 $ Project directory created at :  /var/www/html/mysitename
+
 $ Site enabled! Visit link : http://mysitename.local
