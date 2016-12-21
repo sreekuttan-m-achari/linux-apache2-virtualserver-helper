@@ -17,7 +17,7 @@ import commands
 
 site_name = raw_input("Enter sitename (in lowercase): ")
 
-site_domain = raw_input("Enter site domain (in lowercase): ")
+site_domain = raw_input("Enter site domain (in lowercase eg : .local , .com , .net .. ): ")
 
 conf_file_name = "/etc/apache2/sites-available/"+site_name+site_domain+".conf"
 
