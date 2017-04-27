@@ -21,7 +21,7 @@ site_domain = raw_input("Enter site domain (in lowercase eg : .local , .com , .n
 
 conf_file_name = "/etc/apache2/sites-available/"+site_name+site_domain+".conf"
 
-framework = raw_input("Enter site framework (  default / codeignitor / laravel / lumen  ): ")
+framework = raw_input("Enter site framework (  default / codeignitor / laravel / lumen / symfony ): ")
 
 file = open(conf_file_name, "w")
 
@@ -34,7 +34,12 @@ if framework == 'laravel' or framework == 'lumen' :
 	file.write("\t \tDocumentRoot /var/www/html/"+site_name+"/public \n")
 
 	file.write("\t \t<Directory /var/www/html/"+site_name+"/public> \n")
-	
+elif framework == 'symfony' :
+   	file.write("\t \tDocumentIndex app.php \n")
+
+   	file.write("\t \tDocumentRoot /var/www/html/"+site_name+"/app \n")
+
+	file.write("\t \t<Directory /var/www/html/"+site_name+"/app> \n")
 else :
 	file.write("\t \tDocumentRoot /var/www/html/"+site_name+" \n")
 
