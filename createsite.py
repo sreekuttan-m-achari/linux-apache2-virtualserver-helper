@@ -71,6 +71,10 @@ if framework == 'default' :
       os.mkdir(subdirectory)
   except Exception:
       pass
+  permissons = commands.getstatusoutput( 'sudo chmod -R 777 '+subdirectory )
+  print "\n"
+  print permissons[1]
+  print "\n Directory Permissions Updated" 
   site = "\nProject directory created at : " +subdirectory+ "  \nSite enabled! Visit link : http://"+ site_name+site_domain
 else :
   site = "\nCreate your project in : " +subdirectory+ "  \nSite enabled! After creating project, visit link : http://"+ site_name+site_domain
