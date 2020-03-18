@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import os.path
-import commands
+import subprocess
 
 # subdirectory =  "etc"
 # try:
@@ -15,13 +15,13 @@ import commands
 # except Exception:
 #     pass
 
-site_name = raw_input("Enter sitename (in lowercase): ")
+site_name = input("Enter sitename (in lowercase): ")
 
-site_domain = raw_input("Enter site domain (in lowercase eg : .local , .com , .net .. ): ")
+site_domain = input("Enter site domain (in lowercase eg : .local , .com , .net .. ): ")
 
 conf_file_name = "/etc/apache2/sites-available/"+site_name+site_domain+".conf"
 
-framework = raw_input("Enter site framework (  default / laravel / lumen / symfony ): ")
+framework = input("Enter site framework (  default / laravel / lumen / symfony ): ")
 
 file = open(conf_file_name, "w")
 
@@ -50,14 +50,14 @@ file.write("\t \t \t AllowOverride All \n \t \t \t Require all granted \n  \t \t
 
 file.close()
 
-enable_site = commands.getstatusoutput( 'sudo a2ensite '+ site_name+site_domain )
-print "\n"
-print enable_site[1]
+enable_site = subprocess.getstatusoutput( 'sudo a2ensite '+ site_name+site_domain )
+print ("\n")
+print (enable_site[1])
 
-server_reload = commands.getstatusoutput( 'sudo service apache2 reload ' )
-print "\n"
-print server_reload[1]
-print "\n Apache Service Reloaded!" 
+server_reload = subprocess.getstatusoutput( 'sudo service apache2 reload ' )
+print ("\n")
+print (server_reload[1])
+print ("\n Apache Service Reloaded!")
 
 with open("/etc/hosts", "r+") as f:
      old = f.read() # read everything in the file
@@ -71,15 +71,15 @@ if framework == 'default' :
       os.mkdir(subdirectory)
   except Exception:
       pass
-  permissons = commands.getstatusoutput( 'sudo chmod -R 777 '+subdirectory )
-  print "\n"
-  print permissons[1]
-  print "\n Directory Permissions Updated" 
+  permissons = subprocess.getstatusoutput( 'sudo chmod -R 777 '+subdirectory )
+  print ("\n")
+  print (permissons[1])
+  print ("\n Directory Permissions Updated")
   site = "\nProject directory created at : " +subdirectory+ "  \nSite enabled! Visit link : http://"+ site_name+site_domain
 else :
   site = "\nCreate your project in : " +subdirectory+ "  \nSite enabled! After creating project, visit link : http://"+ site_name+site_domain
 
-print site 
+print (site)
 
 # <VirtualHost *:80>
 #         ServerName mylara.com
