@@ -64,7 +64,10 @@ print("\n Apache Service Reloaded!")
 with open("/etc/hosts", "r+") as f:
     old = f.read()  # read everything in the file
     f.seek(0)  # rewind
-    f.write("127.0.0.1 	 	" + site_name + site_domain + " \n" + old)  # write the new line before
+    www_host = ""
+    if www_support == 'y' or www_support == 'Y':
+        www_host = "  www." + site_name + site_domain
+    f.write("127.0.0.1 	 	" + site_name + site_domain + www_host + " \n" + old)  # write the new line before
 
 subdirectory = "/var/www/html/" + site_name
 
@@ -79,7 +82,7 @@ if framework == 'default':
     print("\n Directory Permissions Updated")
     site = "\nProject directory created at : " + subdirectory + "  \nSite enabled! Visit link : http://" + site_name + site_domain
 else:
-    site = "\nCreate your project in : " + subdirectory + "  \nSite enabled! After creating project, visit link : http://" + site_name + site_domain
+    site = "\nCreate your project in : " + subdirectory + "  \n Site enabled! After creating project, visit link : http://" + site_name + site_domain
 
 print(site)
 
