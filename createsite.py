@@ -27,6 +27,9 @@ framework = input("Enter site framework (  default / laravel / lumen / symfony )
 
 file = open(conf_file_name, "w")
 
+# Added to mitigate CVE-2017-8295 vulnerability
+file.write("UseCanonicalName On \n")
+
 file.write("<VirtualHost *:80> \n")
 
 file.write("\t ServerName " + site_name + site_domain + "\n")
