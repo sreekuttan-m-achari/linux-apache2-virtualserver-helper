@@ -51,7 +51,12 @@ else:
 
     file.write("\t \t<Directory /var/www/html/" + site_name + "> \n")
 
-file.write("\t \t \t AllowOverride All \n \t \t \t Require all granted \n  \t \t </Directory> \n </VirtualHost>")
+file.write("\t \t \t AllowOverride All \n \t \t \t Require all granted \n  \t \t </Directory> \n")
+
+file.write("\t CustomLog /var/log/apache2/" + site_name + site_domain + "-access.log combined \n")
+file.write("\t ErrorLog /var/log/apache2/" + site_name + site_domain + "-error.log \n")
+
+file.write("</VirtualHost>")
 
 file.close()
 
